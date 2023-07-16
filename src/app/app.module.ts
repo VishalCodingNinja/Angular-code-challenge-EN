@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { VehicleModule } from './vehicle/vehicle.module';
 import { EffectsModule } from '@ngrx/effects';
 import { VehicleEffects } from './state/vehicles/vehicle.effects';
-import { VehicleReducer, VehicleTypeReducer } from './state/vehicles/vehicle.reducer';
+import {  VehicleTypeReducer } from './state/vehicles/vehicle.reducer';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import { VehicleReducer, VehicleTypeReducer } from './state/vehicles/vehicle.red
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot(({ Vehicles: VehicleReducer, VehicleTypes: VehicleTypeReducer })),
+    StoreModule.forRoot(({ VehicleTypes: VehicleTypeReducer })),
     VehicleModule,
    
     EffectsModule.forRoot([VehicleEffects])

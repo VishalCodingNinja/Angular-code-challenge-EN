@@ -8,7 +8,7 @@ import {KentekenCheck} from 'rdw-kenteken-check'
 })
 export class VehNumberComponent implements OnInit {
   @Input() formGroupVehicle: FormGroup= this.fb.group({
-    licencePlateNumber: [''],
+    licencePlateNumber: ['', Validators.required],
     });
   constructor(private fb: FormBuilder) {}
 

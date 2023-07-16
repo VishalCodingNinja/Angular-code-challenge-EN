@@ -1,19 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { Vehicle, VehicleTypeDescription } from '../models/vehicle.model';
+import { VehicleTypeDescription } from '../models/vehicle.model';
 
 
 @Injectable({ providedIn: 'root' })
 export class VehicleService {
   constructor() { }
-
-  async getVehicles(): Promise<Vehicle[]> {
-    return JSON.parse(localStorage.getItem('Vehicles') ?? '[]') || [] ;
-  }
-
-  async saveVehicles(Vehicles: Vehicle[]) {
-    localStorage.setItem('Vehicles', JSON.stringify(Vehicles));
-  }
 
   async getVehicleTypes(): Promise<VehicleTypeDescription[]> {
     if (!localStorage.getItem('VehicleTypeDescriptions')) {
@@ -29,16 +21,18 @@ export class VehicleService {
     };
     var vehicleTypes: VehicleTypeDescription[] = JSON.parse(localStorage.getItem('VehicleTypeDescriptions')?? '[]')||[]
     vehicleTypes.forEach(vehicleType=> {
-  if(vehicleType.id==id){
-    vehicleType.IsSelected = true;
+        if(vehicleType.id==id){
+          vehicleType.IsSelected = true;
+        }
+        else{
+          vehicleType.IsSelected = false;
+        }
+  });
+
+    localStorage.setItem('VehicleTypeDescriptions', JSON.stringify(vehicleTypes))
+    return JSON.parse(localStorage.getItem('VehicleTypeDescriptions')?? '[]')||[] ;
   }
-  else{
-    vehicleType.IsSelected = false;
-  }
-});
-localStorage.setItem('VehicleTypeDescriptions', JSON.stringify(vehicleTypes))
-return JSON.parse(localStorage.getItem('VehicleTypeDescriptions')?? '[]')||[] ;
-  }
+
   private async storeStaticDataForVehicleTypeDescription() {
 
     const vehicleTypeDescriptions: VehicleTypeDescription[] = [{

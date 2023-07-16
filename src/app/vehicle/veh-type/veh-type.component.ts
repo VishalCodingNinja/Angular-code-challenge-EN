@@ -18,6 +18,10 @@ export class VehTypeComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.inputVehicleTypes.subscribe(deviceTypes=> {
+      this.selectedVehicle = of(deviceTypes.find(device=>device.IsSelected==true) ?? {} as VehicleTypeDescription);
+      this.selectedVehicleTypeEmitter.emit(this.selectedVehicle);
+     } );
   }
 
   onChangeEvent(e: any){

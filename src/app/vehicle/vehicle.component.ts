@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { loadVehicleTypes } from '../state/vehicles/vehicle.actions';
 import { selectAllVehicleTypes } from '../state/vehicles/vehicle.selectors';
