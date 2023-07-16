@@ -1,0 +1,3 @@
+<picture *ngFor="let vehicle of inputVehicleTypes|async">
+    <img  *ngIf="vehicle.IsSelected"  src="{{vehicle.VehicleTypeUrl}}" alt="auto" class="object-cover h-full w-full">
+</picture>

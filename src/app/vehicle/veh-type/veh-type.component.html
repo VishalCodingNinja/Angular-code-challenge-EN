@@ -1,0 +1,13 @@
+<label class="block mt-4">
+    <span class="text-gray-700">Van welk type voertuig wilt u voertuiginformatie opzoeken?</span>
+    <select class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" 
+    name="vehicle-type" (change)="onChangeEvent($event)">
+      <option *ngFor="let vehicle of inputVehicleTypes|async" [selected]="vehicle.IsSelected" [value]="vehicle.id">{{vehicle.type}}</option>
+    </select>
+  </label>
+
+<!-- SELECT VEHICLE SUBTYPE-->
+<app-veh-sub-type [selectedVehicleType]="selectedVehicle"></app-veh-sub-type>
+
+
+<!-- {{(inputVehicleTypes|async)|json}} -->
